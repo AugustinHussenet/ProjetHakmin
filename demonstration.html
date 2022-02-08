@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>Demonstration - Feedbox mobile app</title>
+    <meta property="og:title" content="Demonstration - Feedbox mobile app" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <style>
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6 {  margin: 0;  padding: 0;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}
+    </style>
+    <style>
+      html {
+        font-family: Lexend;
+        font-size: 16px;
+      }
+
+      body {
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.1;
+        color: var(--dl-color-grays-dark100);
+        background-color: var(--dl-color-grays-white100);
+
+      }
+    </style>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    />
+    <style>
+      ::placeholder{
+      color: #63667066;
+      }
+    </style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <link href="./demonstration.css" rel="stylesheet" />
+
+      <div class="demonstration-container">
+        <div class="navbar-navbar-container rootClassName4">
+          <header
+            data-role="Header"
+            class="navbar-max-width navigation-container"
+          >
+            <div class="navbar-nav">
+              <nav class="navigation-links-nav rootClassName10">
+                <a
+                  href="/index.html"
+                  class="navigation-links-navlink navbar-link"
+                >
+                  <span>Présentation</span>
+                </a>
+                <a
+                  href="/architecture.html"
+                  class="navigation-links-navlink1 navbar-link"
+                >
+                  <span>Architecture</span>
+                </a>
+                <a
+                  href="/securisation.html"
+                  class="navigation-links-navlink2 navbar-link"
+                >
+                  <span>Sécurisation</span>
+                </a>
+                <a
+                  href="/demonstration.html"
+                  class="navigation-links-navlink3 navbar-link"
+                >
+                  <span>Démonstration</span>
+                </a>
+              </nav>
+            </div>
+          </header>
+        </div>
+        <div class="demonstration-container1">
+          <h1 class="demonstration-text">
+            <span>Solution de surveillance</span>
+          </h1>
+          <span class="demonstration-text02">
+            <span>
+              Au sein de l’architecture réseau que nous avons mise en place,
+              nous avons déployé une solution de détection d’attaques et de
+              réponse à incident basée sur l’analyse des fichiers de
+              journalisation.
+            </span>
+            <br />
+            <span>
+              A travers ce dernier article, nous allons réaliser une
+              démonstration de la solution de sécurisation du réseau que nous
+              avons mise en place au travers d’une simulation d’attaque
+              utilisant la récente faille de sécurité log4shell.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              Afin de réaliser cette démonstration, nous nous basons sur le
+              scénario suivant : l’architecture que nous avons déployée contient
+              un serveur vulnérable à la faille log4shell. Ce serveur est placé
+              dans la DMZ et est accessible depuis internet.
+            </span>
+            <span></span>
+          </span>
+          <img
+            alt="image"
+            src="public/playground_assets/infra-1200w.png"
+            class="demonstration-image"
+          />
+          <span class="demonstration-text08">
+            <span>
+              Tout d’abord, qu’est-ce que la vulnérabilité Log4shell ?
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              La faille de sécurité log4shell a été découverte en décembre 2021
+              dans la bibliothèque java Log4J qui est une bibliothèque de
+              journalisation fournissant des fonctions qui permettent de gérer
+              les traces et les historiques des applications.
+            </span>
+            <br />
+            <span>
+              La vulnérabilité log4shell est considérée comme critique dans la
+              mesure où elle permet de réaliser de l’exécution de code à
+              distance ou encore de l’extraction de données.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              Dans cette démonstration, nous supposons qu’un attaquant cherche à
+              utiliser la faille log4shell afin de réaliser une attaque de type
+              reverse shell pour obtenir un accès à notre serveur depuis la
+              machine avec laquelle il lance l’attaque.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>Voici le déroulement de cette attaque :</span>
+            <br />
+            <span></span>
+          </span>
+          <img
+            src="public/playground_assets/publi_3-1200w.png"
+            alt="image"
+            class="demonstration-image01"
+          />
+          <span class="demonstration-text22">
+            <span>
+              1. L’attaquant forge une requête HTTP malveillante qu’il envoie au
+              serveur vulnérable accessible via l’adresse 192.168.1.69 sur le
+              port 80. Le champ « user-agent » de la requête est utilisé afin de
+              transmettre le vecteur d’attaque.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              2. La requête HTTP est journalisée par la bibliothèque Log4J
+              utilisée par le serveur vulnérable. Le paramètre jndi provoque une
+              requête LDAP vers un serveur contrôlé par l’attaquant.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              3. L’objectif de cette requête est de télécharger sur le serveur
+              vulnérable le fichier malveillant reverse_shell.code où il sera
+              exécuté.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              4. Le code malveillant contenu dans le fichier reverse_shell.code
+              est exécuté sur le serveur vulnérable, ce qui initie une connexion
+              entre ce dernier et la machine de l’attaquant. L’attaquant obtient
+              alors un shell pointant vers le serveur vulnérable.
+            </span>
+            <span></span>
+            <br />
+            <span></span>
+          </span>
+          <span class="demonstration-text36">
+            <span>
+              Avant de procéder à la démonstration, voici pour rappel le
+              workflow de la solution que nous avons développée et qui sera
+              suivi dans la suite de cet article :
+            </span>
+            <br />
+            <span></span>
+          </span>
+          <img
+            src="public/playground_assets/workflow_splunk-1-1200w.png"
+            alt="image"
+            class="demonstration-image02"
+          />
+          <span class="demonstration-text39">
+            <span>
+              La première étape de notre simulation correspond à l’envoi par
+              l’attaquant d’une requête malveillante au serveur vulnérable
+              présent dans notre infrastructure et accessible depuis internet.
+            </span>
+          </span>
+          <img
+            src="public/playground_assets/requete-1200w.png"
+            alt="image"
+            class="demonstration-image03"
+          />
+          <span class="demonstration-text41">
+            <span>
+              Cette requête produit une entrée dans le fichier de journalisation
+              du serveur vulnérable qui est transmise en temps réel au serveur
+              splunk dont le rôle est de centraliser l’ensemble des fichiers de
+              journalisation de notre infrastructure. Nous avons mis en place
+              une règle de détection afin de lever une alerte en présence du
+              motif « $&#123;jndi: » dans les entrées des fichiers de
+              journalisation transmis au serveur Splunk.
+            </span>
+            <br />
+            <span>
+              Ainsi, suite à la requête effectuée par l’attaquant, une alerte
+              est générée par le serveur Splunk :
+            </span>
+            <span></span>
+          </span>
+          <img
+            src="public/playground_assets/splunk1-200h.png"
+            alt="image"
+            class="demonstration-image04"
+          />
+          <span class="demonstration-text45">
+            <span>
+              Cette alerte contient l’ensemble des informations sur l’attaque
+              qui ont pu être trouvées dans le fichier de journalisation du
+              serveur vulnérable :
+            </span>
+          </span>
+          <img
+            src="public/playground_assets/splunk2-200h.png"
+            alt="image"
+            class="demonstration-image05"
+          />
+          <span class="demonstration-text47">
+            <span>
+              L’alerte précédemment générée par le serveur Splunk est
+              automatiquement transmise au serveur splunk SOAR afin que ce
+              dernier puisse procéder aux étapes d’investigation (recherches
+              d’informations sur l’alerte afin de s’assurer qu’elle ne
+              correspond pas à un faux positif et qualifier son niveau de
+              dangerosité) et de réponse à incident (action permettant de
+              bloquer une attaque ou de limiter ses impacts sur le système
+              d’information).
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              En effet, la solution splunk SOAR propose de nombreux outils
+              permettant d’enrichir la base d’informations disponibles sur
+              l’alerte. Cela permet par exemple de connaitre le pays d’attaque
+              ou le niveau de confiance liée à l’adresse IP de l’attaquant. Le
+              serveur Splunk SOAR permet également de mettre en place des
+              actions de réponse à incident à la suite d’une tentative
+              d’attaque.
+            </span>
+            <br />
+            <span>
+              Par ailleurs, cette solution permet d’automatiser entièrement les
+              étapes d’investigation et de réponse à incident en mettant en
+              place un playbook définissant les actions qui doivent être mises
+              en œuvre lorsqu’une alerte est générée.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              Dans le cadre de cette démonstration, l’étape d’investigation
+              n’est pas réalisée car la seule donnée à partir de laquelle nous
+              pourrions enrichir notre base d’informations sur l’attaque
+              correspond à l’adresse IP de l’attaquant qui est ici une adresse
+              privée.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              Ainsi, dès que l’alerte générée est reçue par le serveur Splunk
+              SOAR, nous mettons en place des actions de réponse à incident afin
+              de bloquer l’attaquant. Ces actions ont été définies au sein du
+              playbook suivant :
+            </span>
+            <br />
+            <span></span>
+          </span>
+          <img
+            src="public/playground_assets/playbook-1200w.png"
+            alt="image"
+            class="demonstration-image06"
+          />
+          <span class="demonstration-text57">
+            <span>
+              - La première action fait évoluer l’alerte en événement auquel il
+              sera par la suite possible de rattacher l’ensemble des alertes
+              générées dans le cadre de cette tentative d’attaque.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              - Une première action de blocage permet de créer une règle au
+              niveau de l’interface WAN du pare-feu afin de bloquer les flux en
+              provenance de l’attaquant.
+            </span>
+          </span>
+          <img
+            src="public/playground_assets/pfsense1-200h.png"
+            alt="image"
+            class="demonstration-image07"
+          />
+          <span class="demonstration-text62">
+            <span>
+              - Elle est suivie par une action de blocage qui créée une règle au
+              niveau de l’interface de la DMZ de notre réseau afin de bloquer
+              les flux en provenance du serveur vulnérable à destination de
+              l’attaquant. Cela permet d’empêcher l’attaquant d’utiliser le
+              serveur vulnérable afin d’initier une connexion vers sa machine.
+            </span>
+          </span>
+          <img
+            src="public/playground_assets/pfsense2-200h.png"
+            alt="image"
+            class="demonstration-image08"
+          />
+          <span class="demonstration-text64">
+            <span>
+              - L’action suivante permet de supprimer l’ensemble des connexions
+              déjà établies entre l’attaquant et les serveurs de notre
+              infrastructure réseau. Cela permet notamment de bloquer l’attaque
+              dans le cas où l’attaquant aurait réussi à obtenir un shell
+              pointant vers le serveur vulnérable.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              - Ensuite un courriel est envoyé à l’analyste afin de le prévenir
+              qu’une attaque utilisant la faille Log4Shell a été détectée et que
+              l’adresse IP de l’attaquant a été bloquée en réponse. Ce courriel
+              contient également les informations importantes disponibles sur
+              l’alerte.
+            </span>
+            <br />
+            <span></span>
+            <span></span>
+          </span>
+          <img
+            src="public/playground_assets/mail-1200w.png"
+            alt="image"
+            class="demonstration-image09"
+          />
+          <span class="demonstration-text71">
+            <span>
+              - Finalement un prompt est créé sur le serveur Splunk SOAR
+              résumant l’ensemble des informations disponibles sur l’alerte qui
+              ont pu être obtenues lors de la phase d’analyse. Ces dernières
+              permettent à l’analyste de prendre une décision concernant
+              l’alerte :
+            </span>
+          </span>
+          <img
+            src="public/playground_assets/prompt-1200w.png"
+            alt="image"
+            class="demonstration-image10"
+          />
+          <span class="demonstration-text73">
+            <span>
+              1. Soit il peut décider de conserver le blocage dans le cas d’une
+              attaque réelle. Dans ce cas, les règles mises en place sur le
+              pare-feu sont conservées.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span>
+              2. Sinon il peut décider d’annuler le blocage dans le cas où les
+              informations révéleraient que l’alerte correspond en fait à un
+              faux positif. Dans ce cas, les règles de blocage précédemment
+              créées sont supprimées.
+            </span>
+            <br />
+            <span></span>
+            <br />
+            <span></span>
+            <br />
+            <span></span>
+          </span>
+          <span class="demonstration-text83">
+            <span>
+              La solution de détection d’attaques par analyse de fichiers de
+              journalisation que nous avons déployée au sein de notre
+              architecture réseau permet ainsi de détecter des attaques connues
+              et de mettre en place automatiquement des actions permettant de
+              bloquer ou de ralentir l’attaquant.
+            </span>
+            <br />
+            <span>
+              L’intervention d’un analyste dans notre processus de réponse à
+              incident permet de ne pas provoquer un blocage métier dans le cas
+              d’un faux-positif qui proviendrait d’un système métier. Cependant,
+              pour que l’analyste puisse prendre la décision la plus juste
+              vis-à-vis de l’alerte, il est important qu’il dispose d’un maximum
+              d’informations sur l’attaque et l’attaquant. Ces informations sont
+              obtenues lors de la phase d’investigation qui n’a pas été mise en
+              œuvre dans cette démonstration mais qui est primordiale.
+            </span>
+            <br />
+            <span>
+              Finalement, cette solution permet de détecter uniquement des
+              tentatives d’attaques pour lesquelles un motif spécifique est
+              généré dans les fichiers de journalisation des systèmes attaqués.
+              Elle doit ainsi être associée à d’autres solutions de sécurisation
+              afin d’assurer un bon niveau de sécurité du système d’information.
+            </span>
+            <br />
+            <span></span>
+          </span>
+        </div>
+        <div class="footer-container rootClassName3">
+          <footer class="footer-footer">
+            <a
+              href="https://www.depinfonancy.net/"
+              target="_blank"
+              rel="noreferrer noopener"
+              class="footer-link"
+            >
+              <img
+                alt="image"
+                src="../public/playground_assets/embeddedimage-200h.jpg"
+                class="footer-image"
+              />
+            </a>
+            <span class="footer-text">
+              <span>© 2022 Mines Nancy, HUSSENET Augustin</span>
+            </span>
+            <div class="footer-icon-group">
+              <a
+                href="https://www.linkedin.com/in/augustin-hussenet-257969174/"
+                target="_blank"
+                rel="noreferrer noopener"
+                class="footer-link1"
+              >
+                <svg viewBox="0 0 877.7142857142857 1024" class="footer-icon">
+                  <path
+                    d="M135.429 808h132v-396.571h-132v396.571zM276 289.143c-0.571-38.857-28.571-68.571-73.714-68.571s-74.857 29.714-74.857 68.571c0 37.714 28.571 68.571 73.143 68.571h0.571c46.286 0 74.857-30.857 74.857-68.571zM610.286 808h132v-227.429c0-121.714-65.143-178.286-152-178.286-70.857 0-102.286 39.429-119.429 66.857h1.143v-57.714h-132s1.714 37.143 0 396.571v0h132v-221.714c0-11.429 0.571-23.429 4-32 9.714-23.429 31.429-48 68-48 47.429 0 66.286 36 66.286 89.714v212zM877.714 237.714v548.571c0 90.857-73.714 164.571-164.571 164.571h-548.571c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571c90.857 0 164.571 73.714 164.571 164.571z"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/@teleporthq/teleport-custom-scripts"></script>
+    <script>
+      window.onload = () => {
+        const runAllScripts = () => {
+          initializeAllSliders();
+        };
+
+        const listenForUrlChanges = () => {
+          let url = location.href;
+          document.body.addEventListener(
+            "click",
+            () => {
+              requestAnimationFrame(() => {
+                if (url !== location.href) {
+                  runAllScripts();
+                  url = location.href;
+                }
+              });
+            },
+            true
+          );
+        };
+
+        const initializeAllSliders = () => {
+          const allSliders = document.querySelectorAll('[data-type="slider"]');
+          allSliders.forEach((carrousel) => {
+            initializeSlider(carrousel);
+          });
+        };
+
+        const initializeSlider = (carrousel) => {
+          let currentSlide = 0;
+
+          const slides = carrousel.querySelectorAll('[data-type="slide"]');
+          const nextSlideBtns = carrousel.querySelectorAll(
+            '[data-action="nextSlide"]'
+          );
+          const previousSlideBtns = carrousel.querySelectorAll(
+            '[data-action="previousSlide"]'
+          );
+
+          const changeSlide = (slideIndex, action) => {
+            currentSlide = slideIndex;
+
+            switch (action) {
+              case "next":
+                slideIndex === slides.length - 1
+                  ? (currentSlide = 0)
+                  : currentSlide++;
+                break;
+              case "previous":
+                slideIndex === 0
+                  ? (currentSlide = slides.length - 1)
+                  : currentSlide--;
+            }
+
+            carrousel.style.transform = `translateX(${-100 * currentSlide}%)`;
+          };
+
+          previousSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "previous")
+            );
+          });
+
+          nextSlideBtns.forEach((btn) => {
+            btn.addEventListener("click", () =>
+              changeSlide(currentSlide, "next")
+            );
+          });
+        };
+
+        runAllScripts();
+      };
+    </script>
+  </body>
+</html>
