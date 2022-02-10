@@ -26,6 +26,9 @@
   object-fit: cover;
   text-decoration: none;
 }
+.footer-text {
+  align-self: center;
+}
 .footer-icon-group {
   display: flex;
   align-items: center;
