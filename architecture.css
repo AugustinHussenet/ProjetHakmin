@@ -60,6 +60,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 .navbar-max-width {
   justify-content: center;
@@ -75,7 +76,7 @@
 }
 .rootClassName {
   align-self: center;
-  background-color: #ffffff;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 
 .rootClassName2 {
@@ -84,11 +85,11 @@
 }
 .rootClassName3 {
   align-self: center;
-  background-color: #ffffff;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 .rootClassName4 {
   align-self: center;
-  background-color: #ffffff;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 @media(max-width: 767px) {
   .navbar-nav {
@@ -123,6 +124,9 @@
   width: 100px;
   object-fit: cover;
   text-decoration: none;
+}
+.footer-text {
+  align-self: center;
 }
 .footer-icon-group {
   display: flex;
@@ -198,38 +202,19 @@
 .architecture-text01 {
   color: #ffffff;
   align-self: flex-start;
-  margin-top: var(--dl-space-space-oneandhalfunits);
+  margin-top: 0px;
   text-align: justify;
   line-height: 1.5;
+  padding-top: var(--dl-space-space-oneandhalfunits);
+  padding-bottom: 0px;
 }
 .architecture-text02 {
   text-align: justify;
 }
-.architecture-text05 {
+.architecture-text03 {
   text-align: justify;
 }
-.architecture-text06 {
-  text-align: justify;
-}
-.architecture-text07 {
-  text-align: justify;
-}
-.architecture-text08 {
-  text-align: justify;
-}
-.architecture-text09 {
-  text-align: justify;
-}
-.architecture-text10 {
-  text-align: justify;
-}
-.architecture-text11 {
-  text-align: justify;
-}
-.architecture-text12 {
-  text-align: justify;
-}
-.architecture-text13 {
+.architecture-text04 {
   text-align: justify;
 }
 .architecture-image {
@@ -244,8 +229,20 @@
   padding-right: var(--dl-space-space-sixunits);
   padding-bottom: var(--dl-space-space-threeunits);
 }
+.architecture-text06 {
+  color: #ffffff;
+  text-align: justify;
+  line-height: 1.5;
+}
 .architecture-text15 {
   color: #ffffff;
+  text-align: justify;
+  line-height: 1.5;
+  padding-left: var(--dl-space-space-threeunits);
+}
+.architecture-text31 {
+  color: #ffffff;
+  text-align: justify;
   line-height: 1.5;
 }
 .architecture-image1 {
@@ -255,7 +252,8 @@
   padding-top: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-threeunits);
 }
-.architecture-text29 {
+.architecture-text35 {
   color: #ffffff;
+  text-align: justify;
   line-height: 1.5;
 }

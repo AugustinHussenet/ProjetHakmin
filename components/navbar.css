@@ -60,6 +60,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 .navbar-max-width {
   justify-content: center;
@@ -75,7 +76,7 @@
 }
 .rootClassName {
   align-self: center;
-  background-color: #ffffff;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 
 .rootClassName2 {
@@ -84,11 +85,11 @@
 }
 .rootClassName3 {
   align-self: center;
-  background-color: #ffffff;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 .rootClassName4 {
   align-self: center;
-  background-color: #ffffff;
+  background-color: var(--dl-color-backgrounds-gray);
 }
 @media(max-width: 767px) {
   .navbar-nav {

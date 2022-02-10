@@ -2,9 +2,9 @@
 
 <html lang="en">
   <head>
-    <title>Architecture - Feedbox mobile app</title>
-    <meta property="og:title" content="Architecture - Feedbox mobile app" />
-    <meta property="og:title" content="Demonstration - Feedbox mobile app" />
+    <title>Architecture - Hackmin</title>
+    <meta property="og:title" content="Architecture - Hackmin" />
+    <meta property="og:title" content="Demonstration - Hackmin" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
@@ -84,61 +84,15 @@
         <div class="architecture-container1">
           <h1 class="architecture-text">Architecture réseau</h1>
           <span class="architecture-text01">
-            <span class="architecture-text02">
-              Dans le cadre de mon projet de dernière année à l’école des Mines
-              de Nancy, je me suis intéressé à la définition et au déploiement
-              de l’architecture réseau d’un laboratoire informatique sécurisé,
-              mobile et accessible à distance. Les objectifs de ce projet sont
-              les suivants :
-            </span>
-            <br />
-            <span>-</span>
-            <span>
-              Définir et déployer une architecture informatique accessible à
-              distance et permettant de publier des services sur internet.
-            </span>
-            <br />
-            <span class="architecture-text05">
-              - Sécuriser l’architecture mise en place.
-            </span>
-            <br />
-            <span class="architecture-text06">
-              - Déployer une solution de surveillance des flux réseau afin de
-              détecter les tentatives d’attaque et les contrer.
-            </span>
-            <br />
-            <span class="architecture-text07">
-              - Définir et mettre en place un scénario d’attaque permettant de
-              tester la solution déployée.
-            </span>
-            <br />
-            <span class="architecture-text08"></span>
-            <br />
-            <span class="architecture-text09">
-              Cette première publication présente l’architecture réseau que nous
-              avons déployée et les solutions de sécurisation utilisées. Nous
-              détaillerons dans une seconde publication la solution de
-              surveillance de l’activité réseau que nous avons mise en œuvre
-              afin de détecter et de contrer certaines attaques informatiques.
-              Nous verrons finalement dans un dernier article dans quelle mesure
-              il est possible d’utiliser la solution que nous avons construite
-              afin de repérer et bloquer une attaque de type log4shell. Cette
-              attaque utilise des vulnérabilités découvertes récemment dans la
-              bibliothèque de journalisation log4j.
-            </span>
-            <br />
-            <span class="architecture-text10"></span>
-            <br />
-            <span class="architecture-text11"></span>
-            <br />
-            <span class="architecture-text12">
-              La première étape du projet a été de définir l’architecture réseau
+            <span class="architecture-text02">L</span>
+            <span class="architecture-text03">
+              a première étape du projet a été de définir l’architecture réseau
               du laboratoire qui sera utilisée comme environnement de test afin
               de déployer et de tester une solution de détection et de blocage
               d’attaques informatiques.
             </span>
             <br />
-            <span class="architecture-text13">
+            <span class="architecture-text04">
               Voici un schéma simplifié de l’architecture de réseau que nous
               avons retenue :
             </span>
@@ -150,7 +104,7 @@
             src="public/playground_assets/picture1-1200w.png"
             class="architecture-image"
           />
-          <span class="architecture-text15">
+          <span class="architecture-text06">
             <span>
               En réalité, l’ensemble du réseau et des serveurs qui y sont
               connectés sont virtualisés. Pour cela, nous avons utilisé la
@@ -169,17 +123,15 @@
               liés à une adresse IP malveillante afin de bloquer une
               exfiltration de données par exemple.
             </span>
+            <span></span>
+            <span></span>
             <br />
             <span></span>
             <br />
-            <span>
-              En complément du déploiement d’un pare-feu, nous avons mis en
-              place une segmentation du réseau local, c’est-à-dire que nous
-              avons divisé le réseau interne en plusieurs sous-réseaux. Cela
-              permet de contrôler et de filtrer les flux entre les différents
-              sous-réseaux de l’architecture que nous avons définie :
-            </span>
-            <br />
+            <span></span>
+          </span>
+          <span class="architecture-text15">
+            <span></span>
             <span>
               - La zone démilitarisée (ou DMZ) correspond au sous-réseau dans
               lequel sont hébergés les services exposés et accessibles depuis
@@ -194,6 +146,8 @@
               compromission de l’un des serveurs exposés sur internet.
             </span>
             <br />
+            <span></span>
+            <br />
             <span>
               - L’interface OpenVPN reçoit les connections des utilisateurs
               nomades qui souhaitent accéder aux ressources internes. Pour cela
@@ -202,11 +156,15 @@
               interne.
             </span>
             <br />
+            <span></span>
+            <br />
             <span>
               - Le sous-réseau interne héberge les serveurs de données et un
               point d’accès permettant aux utilisateurs internes d’accéder aux
               ressources hébergées localement.
             </span>
+            <br />
+            <span></span>
             <br />
             <span>
               - Finalement, les serveurs de surveillance de l’activité du réseau
@@ -217,6 +175,10 @@
             <br />
             <span></span>
             <br />
+            <span></span>
+          </span>
+          <span class="architecture-text31">
+            <span></span>
             <span>
               Les rôles des différentes machines que nous avons déployées dans
               notre réseau sont résumés dans le tableau synoptique ci-dessous :
@@ -229,7 +191,7 @@
             src="public/playground_assets/capture%20d%E2%80%99%C3%A9cran%202022-01-04%20191725-1200w.png"
             class="architecture-image1"
           />
-          <span class="architecture-text29">
+          <span class="architecture-text35">
             <span>
               Afin de réduire la surface d’attaque sur les différents serveurs,
               nous avons mis en place un processus de durcissement. Ce dernier
